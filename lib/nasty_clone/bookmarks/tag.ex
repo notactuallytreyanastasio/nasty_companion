@@ -5,7 +5,8 @@ defmodule NastyClone.Bookmarks.Tag do
   schema "tags" do
     field :name, :string
 
-    many_to_many :bookmarks, NastyClone.Bookmarks.Bookmark, join_through: NastyClone.Bookmarks.BookmarkTag
+    many_to_many :bookmarks, NastyClone.Bookmarks.Bookmark,
+      join_through: NastyClone.Bookmarks.BookmarkTag
 
     timestamps()
   end
