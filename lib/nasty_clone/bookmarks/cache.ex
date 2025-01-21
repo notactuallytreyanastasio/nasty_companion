@@ -8,6 +8,10 @@ defmodule NastyClone.Bookmarks.Cache do
     GenServer.start_link(__MODULE__, [], name: __MODULE__)
   end
 
+  # Lol, maybe we store these as key-values with a query
+  # params relation irl or something, this is a bit crude
+  # it could also just key on a UUID and then let us have
+  # all the dupes in the world etc
   def init(_) do
     table = :ets.new(@table_name, [:set, :protected, :named_table])
     {:ok, %{table: table}}
