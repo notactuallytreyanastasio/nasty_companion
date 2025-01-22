@@ -18,6 +18,7 @@ defmodule NastyCloneWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/bookmarks", TerminalLive
   end
 
   scope "/api", NastyCloneWeb.Api do

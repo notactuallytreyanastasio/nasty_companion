@@ -1,0 +1,37 @@
+<div class="min-h-screen">
+  <div class="flex justify-between items-center p-3 bg-[#1a1a1a]">
+    <div class="text-[#33ff33] text-xl">PDP-11 BOOKMARK MONITOR V1.0</div>
+    <div class="flex gap-2">
+      <div class="w-3 h-3 rounded-full bg-[#444]"></div>
+      <div class="w-3 h-3 rounded-full bg-[#444]"></div>
+      <div class="w-3 h-3 rounded-full bg-[#444]"></div>
+    </div>
+  </div>
+
+  <div class="p-5 text-lg leading-snug">
+    <div class="columns-[400px] gap-12">
+      <%= for {entries, column_index} <- Enum.chunk_every(@bookmarks, 8) |> Enum.with_index() do %>
+        <div class="break-inside-avoid-column">
+          <%= for {entry, index} <- Enum.with_index(entries) do %>
+            <div class={[
+              "mb-4 transition-opacity duration-300",
+              index == 0 && column_index == 0 && "animate-glow opacity-100" || "opacity-80"
+            ]}>
+              <div class="text-[#888] mb-1">[<%= entry.timestamp %>]</div>
+              <div class="text-[#ff3333] mb-1">NEW_BOOKMARK:</div>
+              <div class="text-[#33ff33] font-bold">> <%= entry.bookmark.title %></div>
+              <div class="text-[#3399ff]">> URL: <%= entry.bookmark.url %></div>
+              <div class="text-[#ff99cc]">> TAGS: <%= Enum.join(entry.tags, ", ") %></div>
+              <div class="text-[#666] my-2">* * * * * * * * * * * * * * * * * * *</div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class={[
+        "inline-block text-[#33ff33] font-bold",
+        @cursor_visible && "animate-blink"
+      ]}>_</div>
+    </div>
+  </div>
+</div>

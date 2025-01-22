@@ -24,8 +24,11 @@
     </div>
   </div>
 </header>
-<main class="px-4 py-20 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-2xl">
+<main class="min-h-screen bg-black relative">
+  <%!-- Scan lines effect --%>
+  <div class="fixed inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px]"></div>
+
+  <div class="relative z-10">
     <.flash_group flash={@flash} />
     {@inner_content}
   </div>
