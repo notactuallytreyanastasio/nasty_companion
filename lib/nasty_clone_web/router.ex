@@ -20,6 +20,12 @@ defmodule NastyCloneWeb.Router do
     get "/", PageController, :home
   end
 
+  scope "/api", NastyCloneWeb.Api do
+    pipe_through :api
+
+    resources "/bookmarks", BookmarkController, only: [:create]
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", NastyCloneWeb do
   #   pipe_through :api
