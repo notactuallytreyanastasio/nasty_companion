@@ -17,7 +17,9 @@ defmodule NastyClone.Application do
       # Start a worker by calling: NastyClone.Worker.start_link(arg)
       # {NastyClone.Worker, arg},
       # Start to serve requests, typically the last entry
-      NastyCloneWeb.Endpoint
+      NastyCloneWeb.Endpoint,
+      NastyClone.Bookmarks.Cache,
+      NastyClone.Bookmarks.Simulator
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
