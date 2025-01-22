@@ -1,6 +1,7 @@
 defmodule NastyClone.Bookmarks.Cache do
   use GenServer
   require Logger
+  alias NastyClone.Bookmarks.Bookmark
 
   @table_name :bookmarks_cache
 
@@ -9,26 +10,15 @@ defmodule NastyClone.Bookmarks.Cache do
   end
 
   def init(_) do
+    Phoenix.PubSub.subscribe(NastyClone.PubSub, "bookmarks")
     table = :ets.new(@table_name, [:set, :protected, :named_table])
     {:ok, %{table: table}}
   end
 
-  def handle_cast({:create_bookmark, attrs, tags}, state) do
+  def handle_info({:bookmark_created, bookmark, _tags}, state) do
+    # TODO tags
     key = Ecto.UUID.generate()
-    bookmark = %Bookmark{
-      title: attrs["title"],
-      description: attrs["description"],
-      url: attrs["url"],
-      public: attrs["public"]
-      # TODO tags
-      # tags: tags
-    }
     :ets.insert(@table_name, {key, bookmark})
-    {:noreply, state}
-  end
-
-  def handle_cast({:update_bookmark, key, attrs}, state) do
-    :ets.insert(@table_name, {key, attrs})
     {:noreply, state}
   end
 end
