@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-black">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nasty Clone - A Retro Bookmark Feed</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+      @keyframes print-line {
+        0% { transform: translateY(-100%); opacity: 0; text-shadow: 0 0 8px #00ffff; }
+        20% { opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; text-shadow: 0 0 4px #00ffff; }
+      }
+      @keyframes blink {
+        50% { opacity: 0; }
+      }
+      .animate-blink {
+        animation: blink 1s step-end infinite;
+      }
+      .animate-print {
+        animation: print-line 0.5s ease-out;
+      }
+    </style>
+  </head>
+  <body class="h-full bg-black font-['Share_Tech_Mono'] text-[#33ff33] antialiased">
+    <div class="min-h-screen bg-[#001100] overflow-hidden relative p-8">
+      <!-- Header -->
+      <div class="max-w-4xl mx-auto mb-12">
+        <h1 class="text-4xl font-['VT323'] text-[#ff00ff] mb-4">Nasty Clone</h1>
+        <p class="text-[#00ffff] opacity-80 mb-8">A retro-styled real-time bookmark feed with multiple views</p>
+
+        <div class="space-y-4">
+          <div class="animate-print">
+            <h2 class="text-2xl text-[#ff00ff] mb-2">Features</h2>
+            <ul class="list-disc list-inside space-y-2 text-[#00ffff]">
+              <li>Real-time bookmark updates via Phoenix Channels</li>
+              <li>Multiple retro-themed views (Terminal & Feed)</li>
+              <li>Tag-based filtering with Python client</li>
+              <li>Dot-matrix printer aesthetic</li>
+            </ul>
+          </div>
+
+          <div class="animate-print" style="animation-delay: 0.5s">
+            <h2 class="text-2xl text-[#ff00ff] mb-2">Views</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="border border-[#ff00ff]/30 p-4 rounded">
+                <h3 class="text-xl mb-2">/bookmarks</h3>
+                <p class="text-[#00ffff] opacity-80">PDP-11 style terminal view with multi-column layout</p>
+              </div>
+              <div class="border border-[#ff00ff]/30 p-4 rounded">
+                <h3 class="text-xl mb-2">/feed</h3>
+                <p class="text-[#00ffff] opacity-80">Dot-matrix printer style continuous feed</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="animate-print" style="animation-delay: 1s">
+            <h2 class="text-2xl text-[#ff00ff] mb-2">Tech Stack</h2>
+            <ul class="list-disc list-inside space-y-2 text-[#00ffff]">
+              <li>Phoenix LiveView</li>
+              <li>Phoenix Channels</li>
+              <li>Tailwind CSS</li>
+              <li>Python WebSocket Client</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 flex gap-4">
+          <a href="https://github.com/yourusername/nasty_clone"
+             class="px-4 py-2 border border-[#ff00ff] text-[#ff00ff] hover:bg-[#ff00ff]/10 rounded">
+            View on GitHub
+          </a>
+          <a href="https://github.com/yourusername/nasty_clone#readme"
+             class="px-4 py-2 border border-[#00ffff] text-[#00ffff] hover:bg-[#00ffff]/10 rounded">
+            Documentation
+          </a>
+        </div>
+      </div>
+
+      <!-- CRT screen corner effect -->
+      <div class="fixed top-4 right-4 text-[#00ffff] text-sm opacity-50">
+        <div>DOCS://ACTIVE</div>
+        <div class="animate-blink">█</div>
+      </div>
+    </div>
+  </body>
+</html>
