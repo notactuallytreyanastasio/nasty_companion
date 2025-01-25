@@ -3,7 +3,7 @@ defmodule NastyCloneWeb.BookmarkChannel do
 
   @impl true
   def join("bookmarks:firehose", _payload, socket) do
-    Phoenix.PubSub.subscribe(NastyClone.PubSub, "bookmarks")
+    Phoenix.PubSub.subscribe(NastyClone.PubSub, "firehose")
     {:ok, socket}
   end
 

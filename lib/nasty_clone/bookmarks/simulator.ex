@@ -31,7 +31,6 @@ defmodule NastyClone.Bookmarks.Simulator do
   end
 
   defp create_random_bookmark do
-    LinkGenerator
     adjective = Enum.random(@adjectives)
     noun = Enum.random(@nouns)
     topic = Enum.random(@topics)
@@ -47,13 +46,13 @@ defmodule NastyClone.Bookmarks.Simulator do
       "public" => true
     }
 
-    tags = [topic, String.downcase(noun)]
+    tags = "#{topic},#{String.downcase(noun)}"
 
     case Bookmarks.create(bookmark_params, tags) do
-      %{id: id} ->
-        Logger.info("Created simulated bookmark: #{title} (ID: #{id})")
-      _ ->
-        Logger.error("Failed to create simulated bookmark: #{title}")
+      {:ok, bookmark} ->
+        Logger.info("Created simulated bookmark: #{title} (ID: #{bookmark.id})")
+      {:error, reason} ->
+        Logger.error("Failed to create simulated bookmark: #{title} - #{inspect(reason)}")
     end
   end
 

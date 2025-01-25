@@ -18,6 +18,7 @@ defmodule NastyClone.Bookmarks.Bookmark do
   def changeset(bookmark, attrs) do
     bookmark
     |> cast(attrs, [:title, :description, :url, :public])
+    |> cast_assoc(:tags)
     |> validate_required([:title, :url])
     |> validate_url(:url)
   end

@@ -10,7 +10,7 @@ defmodule NastyClone.Bookmarks.Cache do
   end
 
   def init(_) do
-    Phoenix.PubSub.subscribe(NastyClone.PubSub, "bookmarks")
+    Phoenix.PubSub.subscribe(NastyClone.PubSub, "firehose")
     table = :ets.new(@table_name, [:set, :protected, :named_table])
     {:ok, %{table: table}}
   end

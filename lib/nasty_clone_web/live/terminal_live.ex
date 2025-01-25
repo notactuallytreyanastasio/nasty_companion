@@ -5,7 +5,7 @@ defmodule NastyCloneWeb.TerminalLive do
   @impl true
   def mount(_params, _session, socket) do
     if connected?(socket) do
-      Phoenix.PubSub.subscribe(NastyClone.PubSub, "bookmarks")
+      Phoenix.PubSub.subscribe(NastyClone.PubSub, "firehose")
     end
 
     {:ok, assign(socket,
