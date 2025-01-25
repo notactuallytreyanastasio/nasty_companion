@@ -2,7 +2,8 @@ defmodule NastyCloneWeb.UserSocket do
   use Phoenix.Socket
 
   # Channels
-  channel "bookmarks:*", NastyCloneWeb.BookmarkChannel
+  channel "bookmarks:firehose", NastyCloneWeb.BookmarkChannel
+  channel "bookmarks:tag:*", NastyCloneWeb.TagChannel
 
   @impl true
   def connect(_params, socket, _connect_info) do
